@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # long way
-  get "/all_products", controller: "products", action: "get_all_products"
+  get "/products" => "products#index"
   # short way
-  get "/one_product/:id" => "products#get_one_product"
+  get "/product/:id" => "products#show"
 end
