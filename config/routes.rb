@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  # long way
+  # index route/action
   get "/products" => "products#index"
-  # short way
+  # show route/action
   get "/products/:id" => "products#show"
+  # create route/action
+  post "/products" => "products#create"
 end
