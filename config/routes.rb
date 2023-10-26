@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get "/products/:id" => "products#show"
   # create route/action
   post "/products" => "products#create"
+  # update route/action
+  patch "/products/:id" => "products#update"
 end

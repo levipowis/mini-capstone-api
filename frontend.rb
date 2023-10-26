@@ -1,6 +1,6 @@
 require "http"
 
-puts "Select an option to continue: [1] One Product, [2] All Products, [3] Create Product"
+puts "Select an option to continue: [1] View Product, [2] View All Products, [3] Create Product, [4] Update Product"
 input_selection = gets.chomp
 
 if input_selection == "1"
@@ -28,5 +28,23 @@ elsif input_selection == "3"
                                                                 :image_url => image_url,
                                                                 :description => description,
                                                               })
+  pp response.parse
+elsif input_selection == "4"
+  print "Enter product ID:"
+  id_selection = gets.chomp.to_i
+  # print "Name:"
+  # name = gets.chomp
+  print "Price:"
+  price = gets.chomp.to_i
+  # print "Image URL:"
+  # image_url = gets.chomp
+  # print "Description:"
+  # description = gets.chomp
+  response = HTTP.patch("http://localhost:3000/products/#{id_selection}.json", :json => {
+                                                                                 :name => name,
+                                                                                 :price => price,
+                                                                                 :image_url => image_url,
+                                                                                 :description => description,
+                                                                               })
   pp response.parse
 end
