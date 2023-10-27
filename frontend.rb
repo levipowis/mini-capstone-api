@@ -50,4 +50,6 @@ elsif input_selection == "4"
 elsif input_selection == "5"
   print "Enter ID for product to DESTROY: "
   id_selection = gets.chomp
+  response = HTTP.delete("http://localhost:3000/products/#{id_selection}.json")
+  pp response.parse
 end
