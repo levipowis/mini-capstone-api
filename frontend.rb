@@ -1,6 +1,6 @@
 require "http"
 
-puts "Select an option to continue: [1] View Product, [2] View All Products, [3] Create Product, [4] Update Product"
+puts "Select an option to continue: [1] View Product, [2] View All Products, [3] Create Product, [4] Update Product, [5] Destroy Product"
 input_selection = gets.chomp
 
 if input_selection == "1"
@@ -30,7 +30,7 @@ elsif input_selection == "3"
                                                               })
   pp response.parse
 elsif input_selection == "4"
-  print "Enter product ID:"
+  print "Enter product ID to udpate:"
   id_selection = gets.chomp.to_i
   # print "Name:"
   # name = gets.chomp
@@ -47,4 +47,7 @@ elsif input_selection == "4"
                                                                                  :description => description,
                                                                                })
   pp response.parse
+elsif input_selection == "5"
+  print "Enter ID for product to DESTROY: "
+  id_selection = gets.chomp
 end

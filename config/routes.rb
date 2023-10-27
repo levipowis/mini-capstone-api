@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   post "/products" => "products#create"
   # update route/action
   patch "/products/:id" => "products#update"
+  # destroy route/action
+  delete "/products/:id" => "products#destroy"
 end
