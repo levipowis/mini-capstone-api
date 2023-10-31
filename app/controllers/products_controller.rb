@@ -17,7 +17,11 @@ class ProductsController < ApplicationController
       description: params["description"],
       inventory: params["inventory"],
     )
-    render template: "products/show"
+    if @product.valid?
+      render template: "products/show"
+    else
+      render json: { errors: @product.errors.full_messages }, status: 422
+    end
   end
 
   def update
@@ -29,7 +33,11 @@ class ProductsController < ApplicationController
       description: params["description"] || @product.description,
       inventory: params["inventory"] || @product.inventory,
     )
-    render template: "products/show"
+    if @product.valid?
+      render template: "products/show"
+    else
+      render json: { errors: @product.errors.full_messages }, status: 422
+    end
   end
 
   def destroy
