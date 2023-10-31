@@ -33,18 +33,22 @@ elsif input_selection == "4"
   print "Enter product ID to udpate:"
   id_selection = gets.chomp.to_i
   while true
-    print "Select field to update: [1]Name, [2]Price, [3]Image URL, [4]Description, [5]Quit"
+    print "Select field to update: [1]Name, [2]Price, [3]Image URL, [4]Description, [5]Quit  "
     field_selection = gets.chomp
     if field_selection == "1"
       print "Name:"
       name = gets.chomp
-
+    elsif field_selection == "2"
       print "Price:"
       price = gets.chomp.to_i
+    elsif field_selection == "3"
       print "Image URL:"
       image_url = gets.chomp
+    elsif field_selection == "4"
       print "Description:"
       description = gets.chomp
+    elsif field_selection == "5"
+      break
     end
     response = HTTP.patch("http://localhost:3000/products/#{id_selection}.json", :json => {
                                                                                    :name => name,
