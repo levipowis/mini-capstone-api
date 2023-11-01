@@ -5,9 +5,12 @@ one:
   price: 1
   image_url: MyString.gif
   description: This needs to be longer.
+  supplier: one
 
 two:
   name: MyString2
   price: 1
   image_url: MyString.jpg
   description: Also needs to be longer.
+  supplier: one
+
