@@ -1,11 +1,14 @@
-# Product.create(name: "Storm Front", price: 18.99, image_url: "https://upload.wikimedia.org/wikipedia/en/2/2b/Storm_Front.png", description: "The first book in the Dresden Files series by Jim Butcher.")
-
-# Product.create(name: "The Stand", price: 28.99, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/The_Stand_%281978%29_front_cover%2C_first_edition.png/440px-The_Stand_%281978%29_front_cover%2C_first_edition.png", description: "Classic end of the world novel by Stephen King.")
-
-# Product.create(name: "Changes", price: 18.99, image_url: "https://m.media-amazon.com/images/I/41Wy6us8heL._SY445_SX342_.jpg", description: "The 12th book in the Dresden Files series by Jim Butcher.")
-
-Supplier.create(name: "Roc Books", email: "roc_books@test.com", phone_number: "888-555-4222")
-
-Supplier.create(name: "Houghton Mifflin", email: "hm@test.com", phone_number: "888-555-4234")
-
-Supplier.create(name: "Doubleday", email: "doubleday@test.com", phone_number: "888-555-1233")
+Supplier.create!([
+  {name: "Roc Books", email: "roc_books@test.com", phone_number: "888-555-4222"},
+  {name: "Houghton Mifflin", email: "hm@test.com", phone_number: "888-555-4234"},
+  {name: "Doubleday", email: "doubleday@test.com", phone_number: "888-555-1233"},
+  {name: "Random House", email: "randomhouse@test.com", phone_number: "888-555-2445"}
+])
+Product.create!([
+  {name: "Changes", price: "25.0", image_url: "https://m.media-amazon.com/images/I/41Wy6us8heL._SY445_SX342_.jpg", description: "The 12th book in the Dresden Files series by Jim Butcher.", inventory: nil, supplier_id: 1},
+  {name: "Lord of the Rings", price: "19.0", image_url: "https://m.media-amazon.com/images/I/51kfFS5-fnL._SY445_SX342_.jpg", description: "One volume of Lord of the Rings by JRR Tolkien", inventory: nil, supplier_id: 2},
+  {name: "The Hobbit", price: "15.0", image_url: "https://m.media-amazon.com/images/I/51uYlDqoIyL._SY445_SX342_.jpg", description: "The Hobbit by JRR Tolkien", inventory: nil, supplier_id: 2},
+  {name: "Path of Destruction", price: "18.0", image_url: "https://m.media-amazon.com/images/I/51o9DAeSvrL._SY445_SX342_.jpg", description: "First in the Darth Bane trilogy.", inventory: nil, supplier_id: 4},
+  {name: "The Rule of Two", price: "15.0", image_url: "https://m.media-amazon.com/images/I/51uVoC-gAZL._SY445_SX342_.jpg", description: "The second novel in the Darth Bane trilogy.", inventory: nil, supplier_id: 4},
+  {name: "The Stand", price: "10.0", image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/The_Stand_%281978%29_front_cover%2C_first_edition.png/440px-The_Stand_%281978%29_front_cover%2C_first_edition.png", description: "Classic end of the world novel by Stephen King.", inventory: nil, supplier_id: 3}
+])
