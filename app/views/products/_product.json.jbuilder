@@ -8,3 +8,4 @@ json.total  product.total
 json.inventory product.inventory
 json.supplier_id product.supplier_id
 json.supplier product.supplier
+json.images product.images
