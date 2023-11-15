@@ -1,0 +1,5 @@
+1. Create an orders controller
+2. Create a post route to the orders controller and a create method
+3. Create a create method in the orders controller
+  - the order should take in a product_id from the products table and a user_id from the users table
+  - it should also take in the price and tax 
