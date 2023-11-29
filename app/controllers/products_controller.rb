@@ -3,7 +3,13 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    render template: "products/index"
+    render :index
+
+    if params[:category]
+      category = Category.find_by(name: params[:category])
+      @products = category.products
+      render :index
+    end
   end
 
   def show

@@ -1,0 +1,4 @@
+1. Create new model called CartedProduct with these columns: user_id, order_id, product_id, status
+2. Create a carted_products controller
+3. Write CRUD methods for carted_products controller (similar to existing order methods)
+4. Write a new method in carted_products controller to create an order in the orders table once the user submits an order
