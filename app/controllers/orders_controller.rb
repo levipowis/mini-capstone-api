@@ -22,19 +22,18 @@ class OrdersController < ApplicationController
     calculated_tax = calculated_subtotal * 0.07
     calculated_total = calculated_subtotal + calculated_tax
 
-    order = Order.create(
+    @order = Order.create(
       user_id: current_user.id,
       subtotal: calculated_subtotal,
       tax: calculated_tax,
       total: calculated_total,
     )
-    render json: @order.as_json
-  end
 
-  if @order.valid?
-    carted_products.update_all(status: "purchased", order_id: @order.id)
-    render :show
-  else
-    render json: { errors: @order.errors.full_messages }, status: 422
+    if @order.valid?
+      carted_products.update_all(status: "purchased", order_id: @order.id)
+      render :show
+    else
+      render json: { errors: @order.errors.full_messages }, status: 422
+    end
   end
 end
