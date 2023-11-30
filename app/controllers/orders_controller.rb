@@ -12,21 +12,15 @@ class OrdersController < ApplicationController
   end
 
   def create
-    carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
-
-    subtotals = carted_products.map { |carted_product|
-      product = Product.find_by(id: carted_product["product_id"])
-      carted_product["quantity"] * product.price
-    }
+    carted_products = current_user.carted_products.where(status: "carted")
 
     calculated_subtotal = 0
-    subtotals.each { |subtotal|
-      calculated_subtotal = calculated_subtotal + subtotal
-    }
+    carted_products.each do |carted_product|
+      calculated_subtotal += carted_product.quantity * carted_product.product.price
+    end
 
-    # calculated_subtotal = product.price * params[:quantity].to_i
-    # calculated_tax = calculated_subtotal * 0.07
-    # calculated_total = calculated_subtotal + calculated_tax
+    calculated_tax = calculated_subtotal * 0.07
+    calculated_total = calculated_subtotal + calculated_tax
 
     order = Order.create(
       user_id: current_user.id,
@@ -35,5 +29,12 @@ class OrdersController < ApplicationController
       total: calculated_total,
     )
     render json: @order.as_json
+  end
+
+  if @order.valid?
+    carted_products.update_all(status: "purchased", order_id: @order.id)
+    render :show
+  else
+    render json: { errors: @order.errors.full_messages }, status: 422
   end
 end
